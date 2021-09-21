@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                <div class="form-group">
+                    <label for="username">username<span class="require pl-4">*</span></label>
+                    <input type="username" class="form-control" name="username" />
+                </div>
+                <div class="form-group">
+                    <label for="email">email<span class="require pl-4">*</span></label>
+                    <input type="email" class="form-control" name="email" />
+                </div>
+                <div class="form-group">
+                    <label for="password">password<span class="require pl-4">*</span></label>
+                    <input type="password" class="form-control" name="password" />
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">confirm_password<span class="require pl-4">*</span></label>
+                    <input type="password" class="form-control" name="confirm_password">
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    Create
+                </button>
+                <button class="btn btn-default">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+        </small>
+    </div>
+{% endblock content %}

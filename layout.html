@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>   
+    <script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.1/css/buttons.bootstrap.min.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">"
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class="bi bi-list"></i>
+        <div class="logo_name">Fadzio Care</div>
+        <i class='bi bi-x bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <i class='bi bi-search bx bx-search' ></i>
+         <input type="text" placeholder="Search...">
+         <span class="tooltip">Search</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bi bi-speedometer2"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip fas fa-caret-down">Dashboard</span>
+      </li>
+      <li>
+       <a href="#">
+        <i class="bi bi-people"></i>
+         <span class="links_name user-btn">User Management</span>
+       </a>
+       <span class="tooltip">User Management</span>
+       <ul class="subs">
+        <li><a href="#pages">Acess Control Profile</a></li>
+        <li><a href="#pages">Business Case</a></li>
+        <li><a href="#pages">Configuration</a></li>        
+        <li><a href="#pages">Department</a></li>
+        <li><a href="#pages">Designation</a></li>
+        <li><a href="#pages">Domain</a></li>
+        <li><a href="#pages">Licence Key</a></li>
+        <li><a href="#pages">Menu</a></li>
+        <li><a href="#pages">Module</a></li>
+        <li><a href="#pages">Profile and POlicy</a></li>
+        <li><a href="#pages">User</a></li>
+        
+      </ul>
+     </li>
+     <li>
+       <a href="#">
+        <i class="bi bi-file-bar-graph"></i>
+         <span class="links_name">Data Extraction</span>
+       </a>
+       <span class="tooltip">Data Extraction</span>
+     </li>
+     <li>
+       <a href="#">
+        <i class="bi bi-droplet"></i>
+         <span class="links_name">DRG</span>
+       </a>
+       <span class="tooltip">DRG</span>
+     </li>
+
+
+
+
+     <li class="profile">
+         <div class="profile-details">
+           <div class="name_job">
+             <div class="name">KGISL</div>
+             <div class="job">coimbatore</div>
+           </div>
+         </div>
+         <i class='bx bx-log-out' id="log_out" ></i>
+     </li>
+    </ul>
+  </div>
+  <section class="home-section ">
+    <div class="row header-row ">
+      <div class="col-md-5  text-white ">
+        <h1 class="italic">FADZIO CARE</h1>
+      </div>
+      <div class="col-md-3  col-sm-6 col-xs-6 ">
+        <fieldset>
+          <div class="controlgroup pt-3">
+            <select id="dynamic">
+              <option selected disabled >select</option>
+              <option value="{{url_for('account')}}">Account</option>
+              <option value="{{url_for('new_post')}}" >new post</option>
+              <option value="https://embed.plnkr.co/plunk/H5WVxN" >post</option>
+              
+            </select>
+            </div>
+        </fieldset>
+      </div>
+      <div class="col-md-2   col-xs-4 col-sm-4">
+      </div>
+      <div class="col-md-2  col-lg-2 col-xs-2 col-sm-2 navbar-nav dropdown">
+        {% if current_user.is_authenticated %}
+        <div class="dropbtn">
+          <button class=""><i class="bi bi-person">{{current_user.username}}</i></button>
+          <div class="dropdown-content">
+            <a href="{{url_for('account')}}">Account</a>
+            <a href="{{url_for('logout')}}">Logout</a>
+          </div>
+        </div>
+      {% endif %}
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="container-fluid">
+        <section id="dataset">
+          <div class="col-md-6">
+            {% block content %}
+            {% endblock %}
+          </div>
+        </section>
+  
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+    $(function(){
+      $('#dynamic').on('change',function(){
+        var url=$(this).val()
+        if(url){
+          window.location=url
+        }
+        return false
+      })
+    })
+    </script>
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+  <!-- Responsive extension -->
+  <script src="https://cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
+  <!-- Buttons extension -->
+  <script src="//cdn.datatables.net/buttons/1.2.1/js/dataTables.buttons.min.js"></script>
+  <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+  <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js"></script>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  
+
+$('.user-btn').click(function(){
+  $('.subs').toggleClass("show")
+})
+
+$('.help-block').hide()
+
+$(document).ready(function() {
+    var dataTable = $('#filtertable').DataTable({
+        "pageLength":5,
+        'aoColumnDefs':[{
+            'bSortable':false,
+            'aTargets':['nosort'],
+        }],
+        columnDefs:[
+            {type:'date-dd-mm-yyyy',aTargets:[5]}
+        ],
+        "aoColumns":[
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "order":false,
+        "bLengthChange":false,
+        "dom":'<"top">ct<"top"p><"clear">'
+    });
+    $("#filterbox").keyup(function(){
+        dataTable.search(this.value).draw();
+    });
+} );
+
+var modal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+
+        
+    }
+}
+
+</script>
+
+</body>
+</html>

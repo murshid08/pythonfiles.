@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="id02" class="modal">
+                  
+  <form class="home-modal-content animate"  enctype="multipart/form-data" action="" method="POST">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img class="avatar" src="https://png.pngtree.com/png-vector/20190225/ourlarge/pngtree-vector-avatar-icon-png-image_702436.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+        <center>
+            <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Address</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress2">Address 2</label>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control">
+                      <option selected>Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+              </form>
+        </center>
+
+
+    <div class="container">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+    </div>
+  </form>
+</div> 
+    <div class="container p-30">
+     
+        <div class="row">
+            <div class="col-md-12 main-datatable">
+                <div class="card_body">
+                    <div class="row d-flex">
+                        <div class="col-sm-4 createSegment"> 
+                         <button class="btn dim_button create_new" onclick="document.getElementById('id02').style.display='block'" style="width:auto;"> <span class="glyphicon glyphicon-plus"></span></button>
+                        </div>
+                        <div class="col-sm-8 add_flex">
+                            <div class="form-group searchInput">
+                                <label for="email">Search:</label>
+                                <input type="search" class="form-control" id="filterbox" placeholder=" ">
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="overflow-x">
+                        <table style="width:100%;" id="filtertable" class="table cust-datatable dataTable no-footer">
+                            <thead>
+                                <tr>
+                                    <th style="min-width:50px;">ID</th>
+                                    <th style="min-width:150px;">Name</th>
+                                    <th style="min-width:150px;">Mode</th>
+                                    <th style="min-width:100px;">Event</th>
+                                    <th style="min-width:100px;">Date</th>
+                                    <th style="min-width:150px;">Status</th>
+                                    <th style="min-width:63px;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Dummy</td>
+                                    <td><span class="mode mode_process">Processing</span></td>
+                                    <td>Journey</td>
+                                    <td>17-Apr-2020</td>
+                                    <td><span class="mode mode_on">Active</span></td>
+                                    <td>
+                    
+                                        <div class="btn-group">
+                                            <a class="dropdown-toggle dropdown_icon" data-toggle="dropdown">
+                                                <i class="fa fa-ellipsis-h"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown_more">
+                                                <li>
+                                                    <a href="#" target="_black">
+                                                        <i class="fa fa-clone"></i>Duplicate
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_black">
+                                                        <i class="fa fa-trash"></i> Delete
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_black">
+                                                        <i class="fa fa-list"></i>Activity</a>
+                                                    </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+         
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.14/js/jquery.dataTables.min.js"></script>
+<script>
+
+</script>
+{% endblock content %}
